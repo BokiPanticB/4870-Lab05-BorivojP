@@ -8970,11 +8970,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\playground\\4870\\Health\\HealthAPI\\HealthAPI.csproj",
+      "projectUniqueName": "C:\\playground\\4870\\Health\\HealthAPI\\HealthAPI.csproj",
       "projectName": "HealthAPI",
-      "projectPath": "c:\\playground\\4870\\Health\\HealthAPI\\HealthAPI.csproj",
+      "projectPath": "C:\\playground\\4870\\Health\\HealthAPI\\HealthAPI.csproj",
       "packagesPath": "C:\\Users\\panti\\.nuget\\packages\\",
-      "outputPath": "c:\\playground\\4870\\Health\\HealthAPI\\obj\\",
+      "outputPath": "C:\\playground\\4870\\Health\\HealthAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\panti\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -9042,20 +9042,8 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[5.0.13, 5.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
           }
         ],
         "frameworkReferences": {

@@ -1,3 +1,4 @@
+#nullable disable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using HealthAPI.Data;
 using HealthAPI.Models;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Authorization;
 
 namespace HealthAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("HealthPolicy")]
-    [Authorize]
     [ApiController]
     public class PatientsController : ControllerBase
     {
@@ -29,35 +28,22 @@ namespace HealthAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
-            return await _context
-            .Patients
-            .Include(p => p.Ailments)
-            .Include(m => m.Medications)
-            .ToListAsync();
+            return await _context.Patients
+  .Include(i => i.Ailments)
+  .Include(m => m.Medications)
+  .ToListAsync();
+
         }
-
-        // GET api/patients/3/medication
-        [HttpGet("{id:int}/medication")]
-        public async Task<IActionResult> GetMedications(int id) {
-            var patient = await _context.Patients
-                .Include(m => m.Medications)
-                .FirstOrDefaultAsync(i => i.PatientId == id);
-
-            if (patient == null)
-                return NotFound();
-
-            return Ok(patient.Medications);
-        }
-
 
         // GET: api/Patients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Patient>> GetPatient(int id)
         {
             var patient = await _context.Patients
-                .Include(i => i.Ailments)
-                .Include(m => m.Medications)
-                .FirstOrDefaultAsync(i => i.PatientId == id);
+  .Include(i => i.Ailments)
+  .Include(m => m.Medications)
+  .FirstOrDefaultAsync(i => i.PatientId == id);
+
 
             if (patient == null)
             {
@@ -67,6 +53,8 @@ namespace HealthAPI.Controllers
             return patient;
         }
 
+        // PUT: api/Patients/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPatient(int id, Patient patient)
         {
@@ -122,6 +110,21 @@ namespace HealthAPI.Controllers
 
             return NoContent();
         }
+
+        // GET api/patients/3/medication
+        [HttpGet("{id:int}/medication")]
+        public async Task<IActionResult> GetMedications(int id)
+        {
+            var patient = await _context.Patients
+              .Include(m => m.Medications)
+              .FirstOrDefaultAsync(i => i.PatientId == id);
+
+            if (patient == null)
+                return NotFound();
+
+            return Ok(patient.Medications);
+        }
+
 
         private bool PatientExists(int id)
         {
